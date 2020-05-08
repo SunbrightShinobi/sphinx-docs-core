@@ -34,7 +34,7 @@ extensions = [
     'sphinxcontrib.confluencebuilder',
     'sphinx.ext.extlinks',
     'sphinx.ext.githubpages',
-    'sphinxdrawio.drawio_html',
+    'sphinxcontrib.drawio',
 ]
 
 # Configuration settings for imgmath
