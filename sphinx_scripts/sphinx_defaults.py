@@ -112,6 +112,9 @@ rst_prolog = """
            git_repo=git_repo,
            )
 
+#Jinja Configuration
+jinja_base = os.path.abspath('.') # Allows Jinja to find configured templates not in default path
+
 # Load the html configuration
 exec(open(r'./common/sphinx_html_defaults.py').read())
 # Load the latexpdf configuration
