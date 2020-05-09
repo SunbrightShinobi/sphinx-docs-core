@@ -77,6 +77,11 @@ numfig_format = {'figure': 'Figure %s',
                  'section': 'Section %s',
                 }
 
+# Configuration settings for draw.io
+#drawio_binary_path = 
+drawio_headless = True
+drawio_output_format = "png" #"jpg" and "svg" just hang
+
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
