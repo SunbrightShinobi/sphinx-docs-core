@@ -38,7 +38,7 @@ extensions = [
 ]
 
 # Configuration settings for imgmath
-imgmath_image_format = "png"
+imgmath_image_format = "svg"
 # Configuration settings for seqdiag
 seqdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
 seqdiag_html_image_format = "SVG"
@@ -79,8 +79,8 @@ numfig_format = {'figure': 'Figure %s',
 
 # Configuration settings for draw.io
 #drawio_binary_path = 
-drawio_headless = True
-drawio_output_format = "png" #"jpg" and "svg" just hang
+drawio_headless = False #svg=False,png=True,pdf=unknown
+drawio_output_format = "svg" #svg looks best
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -98,10 +98,10 @@ todo_link_only = True
 highlight_languange = 'shell-session'
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['common/_templates']
 
 # Load the git configuration
-exec(open(r'./common/sphinx_git.py').read())
+exec(open(r'./common/sphinx_scripts/sphinx_git.py').read())
 
 # set filename
 file_name = '_'.join([project.replace(' ', '_'),
@@ -121,9 +121,9 @@ rst_prolog = """
 jinja_base = os.path.abspath('.') # Allows Jinja to find configured templates not in default path
 
 # Load the html configuration
-exec(open(r'./common/sphinx_html_defaults.py').read())
+exec(open(r'./common/sphinx_scripts/sphinx_html_defaults.py').read())
 # Load the latexpdf configuration
-# exec(open(r'./common/sphinx_latex_defaults.py').read())
+# exec(open(r'./common/sphinx_scripts/sphinx_latex_defaults.py').read())
 
 # The master toctree document.
 master_doc = 'index'
