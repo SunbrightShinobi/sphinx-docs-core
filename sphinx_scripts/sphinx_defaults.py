@@ -35,6 +35,7 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinx.ext.githubpages',
     'sphinxcontrib.drawio',
+    'sphinxdrawio.drawio_html',
 ]
 
 # Configuration settings for imgmath
