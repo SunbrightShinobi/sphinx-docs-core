@@ -39,7 +39,7 @@ extensions = [
 ]
 
 # Configuration settings for imgmath
-imgmath_image_format = "svg"
+imgmath_image_format = "png"
 # Configuration settings for seqdiag
 seqdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
 seqdiag_html_image_format = "SVG"
