@@ -80,8 +80,11 @@ numfig_format = {'figure': 'Figure %s',
 
 # Configuration settings for draw.io
 #drawio_binary_path = 
-drawio_headless = False #svg=False,png=True,pdf=unknown
-drawio_output_format = "svg" #svg looks best
+drawio_headless = True  #svg=False,png=True,pdf=unknown
+drawio_builder_export_format = {"html": "svg", "latex": "pdf", "rinoh": "pdf"} #svg looks best
+drawio_default_export_scale = 100
+drawio_default_transparency = False
+drawio_no_sandbox = False
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
