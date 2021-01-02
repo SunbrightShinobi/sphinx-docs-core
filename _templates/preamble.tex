@@ -1,0 +1,218 @@
+\usepackage{pageslts}
+\usepackage[titletoc]{appendix}
+\usepackage{procedure}
+%\usepackage[top=1.3in,bottom=1.1in,right=.5in,left=.5in,headheight=90pt]{geometry}
+\usepackage{eforms}
+\usepackage{longtable,tabularx,ltxtable}
+\usepackage{booktabs}
+\usepackage[para]{threeparttablex}
+\usepackage{array,ragged2e}
+\usepackage{rotating}
+\usepackage{makecell}
+\usepackage{tocloft}
+\usepackage{xstring}
+\usepackage{xcolor}
+\usepackage{pdflscape}
+\usepackage{titlesec}
+\usepackage{pdfpages}
+\usepackage{multicol}
+% \usepackage{fontspec}
+
+\setkeys{Hyp}{bookmarksnumbered=true}%
+\setkeys{Hyp}{pageanchor=true}%
+\newgeometry{top=1.3in,bottom=1.1in,right=.5in,left=.5in,headheight=90pt}
+
+% Some document have long list lengths that will cause the build to fail
+% This resolves that issue.
+\usepackage{enumitem}
+\setlistdepth{9}
+\setlist[itemize,1]{label=$$\bullet$$}
+\setlist[itemize,2]{label=$$\bullet$$}
+\setlist[itemize,3]{label=$$\bullet$$}
+\setlist[itemize,4]{label=$$\bullet$$}
+\setlist[itemize,5]{label=$$\bullet$$}
+\setlist[itemize,6]{label=$$\bullet$$}
+\setlist[itemize,7]{label=$$\bullet$$}
+\setlist[itemize,8]{label=$$\bullet$$}
+\setlist[itemize,9]{label=$$\bullet$$}
+\renewlist{itemize}{itemize}{9}
+
+% Set the depth of the TOC counter
+\setcounter{secnumdepth}{9}
+
+\usepackage{alphalph,etoolbox}
+\appto\appendix{% patch \appendix so \AlphAlph is used
+  \renewcommand\thechapter{\AlphAlph{\value{chapter}}}%
+}
+% Setup the color and look of note type directives
+% Color Mapping - https://www.latextemplates.com/svgnames-colors
+
+\sphinxsetup{%
+    noteborder=2pt,
+    noteBorderColor={named}{LightSkyBlue},
+    importantborder=2pt,
+    importantBorderColor={named}{LightSeaGreen},
+    cautionborder=2pt,
+    cautionBorderColor={named}{Orange},
+    warningborder=2pt,
+    warningBorderColor={named}{Crimson},
+    dangerborder=2pt,
+    dangerBorderColor={named}{Red},
+    VerbatimHighlightColor={named}{Lime},
+    TitleColor={named}{Black},
+}
+
+% Change the fonts for the document to look nicer
+\usepackage{upquote}
+
+
+\authoraddress{
+  ${address}
+}
+\def\project{${project}}
+\def\changeNotice{${changeNotice}}
+\def\systemName{${systemName}}
+\def\csci{${csci}}
+\def\classification{${classification}}
+\def\documentnumber{${documentnumber}}
+\def\docrevision{${docrevision}}
+\def\cmversion{${cmversion}}
+\def\docReleaseDate{${docReleaseDate}}
+\def\docReleaseDesc{${docReleaseDesc}}
+\def\doc_sw_pn_current{${doc_sw_pn_current}}
+\def\doc_sw_pn_dash_current{${doc_sw_pn_dash_current}}
+\def\doc_sw_pn_previous{${doc_sw_pn_previous}}
+\def\doc_sw_pn_dash_previous{${doc_sw_pn_dash_previous}}
+\def\contractNum{${contractNum}}
+\def\cdrlNum{${cdrlNum}}
+
+
+
+\setupHeadFootForFrontMatter
+
+%% Insert the Last Signature Field. WILL LOCK ALL OTHER FIELDS (PREVENT SIGNING!)
+\newcommand{\lastSigField}[2]{
+  \sigField[\Lock{/Action/All}]{#1}{#2}
+}
+
+%% Signature Page
+\newcommand{\signaturepage}{
+  \pagestyle{plain}
+  \setcounter{page}{2}%
+    \begin{center}
+        \smallskip
+        \includegraphics[width=0.15\linewidth]{titlelogo.png}\par
+        \smallskip\smallskip
+        \Large \textbf{APPROVAL SHEET} \\
+        \smallskip
+        \normalfont\normalsize{See Change Notice (CN)}\normalfont\normalsize{ in <COMPANY CM TRACKER> for approvals} \\
+        \vfill
+    \end{center}
+    \newpage
+}
+
+%% Revision History Page
+\newcommand{\revisionhistory}{
+  \renewcommand\cellalign{tl}
+    \begin{center}
+        \Large \textbf{DOCUMENT CHANGE HISTORY} \normalsize
+        \smallskip
+        \renewcommand{\arraystretch}{1.6}
+        \begin{longtable}[c]{ | p{2.5in} | p{1in} | p{0.5in} | p{3.0in} | }
+        \hline
+            \multicolumn{1}{|c|}{\textbf{Date}} &
+            \multicolumn{1}{c|}{\textbf{CN\#}} &
+            \multicolumn{1}{c|}{\textbf{Rev.}} &
+            \multicolumn{1}{c|}{\textbf{Description}} \\
+        \hline
+            \multicolumn{1}{|c|}{\sigField{Sig1}{2.5in}{0.5in}} &
+            \multicolumn{1}{c|}{\changeNotice} &
+            \multicolumn{1}{c|}{\docrevision} &
+            \multicolumn{1}{c|}{\docReleaseDesc} \\ \hline
+        \endfirsthead
+
+        \multicolumn{4}{c}%
+        {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+        \hline
+            \multicolumn{1}{|c|}{\textbf{Date}} &
+            \multicolumn{1}{c|}{\textbf{CN\#}} &
+            \multicolumn{1}{c|}{\textbf{Rev.}} &
+            \multicolumn{1}{c|}{\textbf{Description}} \\ \hline
+        \endhead
+
+        \hline \multicolumn{4}{|r|}{{Continued on next page}} \\
+        \endfoot
+
+        \hline
+        \endlastfoot
+
+        ${revisionhistory}
+
+        \end{longtable}
+    \end{center}
+    \newpage
+}
+
+
+% Update the table of contents/figures/tables to look more like our documents
+\newcommand\formattoc {
+    % Make the title for the tables to be centered
+    \renewcommand{\cfttoctitlefont}{\hfill\Huge\bfseries}
+    \renewcommand{\cftaftertoctitle}{\hfill}
+    \renewcommand{\cftloftitlefont}{\hfill\Huge\bfseries}
+    \renewcommand{\cftafterloftitle}{\hfill}
+    \renewcommand{\cftlottitlefont}{\hfill\Huge\bfseries}
+    \renewcommand{\cftafterlottitle}{\hfill}
+    \renewcommand{\cftsecnumwidth}{3em}
+    \renewcommand{\cftsubsecnumwidth}{4em}
+    \renewcommand{\cftsubsubsecnumwidth}{5em}
+
+    \renewcommand{\cftfignumwidth}{3.5em}
+    \renewcommand{\cfttabnumwidth}{3.5em}
+
+    % Change it to say "Table of Contents" instead of "Contents"
+    \renewcommand{\contentsname}{TABLE OF CONTENTS}
+    \renewcommand{\listfigurename}{LIST OF FIGURES}
+    \renewcommand{\listtablename}{LIST OF TABLES}
+}
+
+\makeatletter
+
+% Change the default layout of notes, caution, warning and danger blocks.
+\renewenvironment{sphinxnote}[1]
+  {\begin{sphinxheavybox}\begin{center}\sphinxstrong{\MakeUppercase{#1}}\\\end{center} }{\end{sphinxheavybox}}
+
+\renewenvironment{sphinximportant}[1]
+  {\begin{sphinxheavybox}\begin{center}\sphinxstrong{\MakeUppercase{#1}}\\\end{center} }{\end{sphinxheavybox}}
+
+\renewenvironment{sphinxwarning}[1]
+  {\begin{sphinxheavybox}\begin{center}\sphinxstrong{\MakeUppercase{#1}}\\\end{center} }{\end{sphinxheavybox}}
+
+\renewenvironment{sphinxcaution}[1]
+  {\begin{sphinxheavybox}\begin{center}\sphinxstrong{\MakeUppercase{#1}}\\\end{center} }{\end{sphinxheavybox}}
+
+\renewenvironment{sphinxdanger}[1]
+  {\begin{sphinxheavybox}\begin{center}\sphinxstrong{\MakeUppercase{#1}}\\\end{center} }{\end{sphinxheavybox}}
+
+
+
+
+\makeatletter
+\newcommand\custombeginlandscape {
+    \begin{landscape}
+    \setupHeadFootForText
+    \pagenumbering{arabic}
+    \pagestyle{plain}
+}
+
+\newcommand\customendlandscape {
+    \end{landscape}
+    \setupHeadFootForText
+    \pagenumbering{arabic}
+    \pagestyle{plain}
+}
+
+\makeatother
+
+
+\renewcommand{\sphinxmenuselection}[1]{\textit{\textbf{#1}}}

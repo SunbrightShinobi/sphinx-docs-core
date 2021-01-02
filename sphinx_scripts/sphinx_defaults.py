@@ -4,6 +4,9 @@ import tablib
 import ciscoconfparse
 import os
 
+# Load the custom objects for sphinx
+exec(open(r'./common/sphinx_scripts/sphinx_custom_objects.py').read())
+
 # -- General configuration ------------------------------------------------
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
@@ -68,7 +71,7 @@ actdiag_latex_image_format = "PDF"
 
 # Configuration settings for plantuml
 plantuml_output_format = "svg"
-plantuml_latex_output_format = "eps"
+plantuml_latex_output_format = "pdf"
 plantuml = "java -jar " + os.environ[r'PLANTUML']
 
 numfig = True
@@ -95,7 +98,7 @@ source_suffix = '.rst'
 pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True # TODO: Figure out latex issues when i turn on todo list. This needs to be false in latexpdf
+todo_include_todos = False # TODO: Figure out latex issues when i turn on todo list. This needs to be false in latexpdf
 todo_emit_warnings = True
 todo_link_only = True
 
@@ -104,8 +107,17 @@ highlight_languange = 'shell-session'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['common/_templates']
 
+################################################################################
+# Setup CM Status
+################################################################################
 # Load the git configuration
 exec(open(r'./common/sphinx_scripts/sphinx_git.py').read())
+
+cmstatus='Non-CM'
+if is_in_git():
+    cmstatus = get_git_status()
+    gitstatus = 'inGit'
+
 
 # set filename
 file_name = '_'.join([project.replace(' ', '_'),
@@ -127,7 +139,5 @@ jinja_base = os.path.abspath('.') # Allows Jinja to find configured templates no
 # Load the html configuration
 exec(open(r'./common/sphinx_scripts/sphinx_html_defaults.py').read())
 # Load the latexpdf configuration
-# exec(open(r'./common/sphinx_scripts/sphinx_latex_defaults.py').read())
+exec(open(r'./common/sphinx_scripts/sphinx_latex_defaults.py').read())
 
-# The master toctree document.
-master_doc = 'index'
