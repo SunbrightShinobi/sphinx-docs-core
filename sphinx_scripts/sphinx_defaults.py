@@ -120,9 +120,11 @@ if is_in_git():
 
 
 # set filename
-file_name = '_'.join([project.replace(' ', '_'),
-                      'Release',
-                      gittag.replace('.', '_').replace(' ', '_'),])
+file_name = '_'.join([documentnumber,
+                      project.replace(' ', '_'),
+                      'Rev',
+                      document_rev,
+                      release.replace('.', '_').replace(' ', '_'),])
 
 rst_prolog = """
 .. |project| replace:: {project}

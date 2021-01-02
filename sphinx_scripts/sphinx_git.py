@@ -93,7 +93,7 @@ def get_git_release():
         return repo.head.commit.hexsha[:11]
 
 if is_in_git():
-    release = get_git_status()
+    release = get_git_release()
     if get_git_reponame():
         git_repo = get_git_reponame()
     else:
