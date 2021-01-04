@@ -1,5 +1,6 @@
 \usepackage{pageslts}
 \usepackage[titletoc]{appendix}
+\usepackage{etoolbox}
 \usepackage{procedure}
 %\usepackage[top=1.3in,bottom=1.1in,right=.5in,left=.5in,headheight=90pt]{geometry}
 \usepackage{eforms}
@@ -17,6 +18,9 @@
 \usepackage{pdfpages}
 \usepackage{multicol}
 % \usepackage{fontspec}
+
+% make phantomsection empty inside figures for citations in figure captions
+%\AtBeginEnvironment{figure}{\renewcommand{\phantomsection}{}}
 
 \setkeys{Hyp}{bookmarksnumbered=true}%
 \setkeys{Hyp}{pageanchor=true}%
@@ -64,7 +68,6 @@
 
 % Change the fonts for the document to look nicer
 \usepackage{upquote}
-
 
 \authoraddress{
   ${address}
@@ -145,8 +148,6 @@
 
         \hline
         \endlastfoot
-
-        ${revisionhistory}
 
         \end{longtable}
     \end{center}

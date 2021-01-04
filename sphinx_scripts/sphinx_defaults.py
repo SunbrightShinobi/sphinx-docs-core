@@ -39,6 +39,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinxcontrib.drawio',
     'sphinxdrawio.drawio_html',
+    'sphinxcontrib.bibtex',
 ]
 
 # Configuration settings for imgmath
@@ -88,6 +89,11 @@ drawio_builder_export_format = {"html": "svg", "latex": "pdf", "rinoh": "pdf"} #
 drawio_default_export_scale = 100
 drawio_default_transparency = False
 drawio_no_sandbox = False
+
+# bibtex configuration settings
+bibtex_bibfiles = ['common_docs/references/refs.bib']
+bibtex_default_style = 'alpha' #[alpha, plain, unsrt, usrtalpha]
+bibtex_encoding = 'utf-8-sig' #[utf-8-sig,latin]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
