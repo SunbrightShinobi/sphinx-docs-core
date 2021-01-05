@@ -1,5 +1,6 @@
 \usepackage{pageslts}
 \usepackage[titletoc]{appendix}
+\usepackage{etoolbox}
 \usepackage{procedure}
 %\usepackage[top=1.3in,bottom=1.1in,right=.5in,left=.5in,headheight=90pt]{geometry}
 \usepackage{eforms}
@@ -16,7 +17,11 @@
 \usepackage{titlesec}
 \usepackage{pdfpages}
 \usepackage{multicol}
+\usepackage{multirow}
 % \usepackage{fontspec}
+
+% make phantomsection empty inside figures for citations in figure captions
+%\AtBeginEnvironment{figure}{\renewcommand{\phantomsection}{}}
 
 \setkeys{Hyp}{bookmarksnumbered=true}%
 \setkeys{Hyp}{pageanchor=true}%
@@ -64,7 +69,6 @@
 
 % Change the fonts for the document to look nicer
 \usepackage{upquote}
-
 
 \authoraddress{
   ${address}
@@ -117,18 +121,13 @@
     \begin{center}
         \Large \textbf{DOCUMENT CHANGE HISTORY} \normalsize
         \smallskip
-        \renewcommand{\arraystretch}{1.6}
-        \begin{longtable}[c]{ | p{2.5in} | p{1in} | p{0.5in} | p{3.0in} | }
+        \begin{longtable}[c]{ | p{2.5in} | p{1.0in} | p{0.5in} | p{3.0in} | }
         \hline
-            \multicolumn{1}{|c|}{\textbf{Date}} &
-            \multicolumn{1}{c|}{\textbf{CN\#}} &
-            \multicolumn{1}{c|}{\textbf{Rev.}} &
-            \multicolumn{1}{c|}{\textbf{Description}} \\
+            \multicolumn{1}{|c|}{\rule{0pt}{10pt}\textbf{Date}} &
+            \multicolumn{1}{c|}{\rule{0pt}{10pt}\textbf{CN\#}} &
+            \multicolumn{1}{c|}{\rule{0pt}{10pt}\textbf{Rev.}} &
+            \multicolumn{1}{c|}{\rule{0pt}{10pt}\textbf{Description}} \\
         \hline
-            \multicolumn{1}{|c|}{\sigField{Sig1}{2.5in}{0.5in}} &
-            \multicolumn{1}{c|}{\changeNotice} &
-            \multicolumn{1}{c|}{\docrevision} &
-            \multicolumn{1}{c|}{\docReleaseDesc} \\ \hline
         \endfirsthead
 
         \multicolumn{4}{c}%

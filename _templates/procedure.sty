@@ -7,7 +7,6 @@
 % Make Captions go below figures
 \floatplacement{figure}{bp!}
 
-
 % The CM department wants section titles to be like Heading 1 in Word with a
 % Number.0 (eg 1.0, 2.0) on the left, no fancy stuff, no rule, etc
 
@@ -49,15 +48,13 @@
     }
     \renewcommand{\thepage}{\Alph{chapter}-\arabic{page}}
     \titleformat{\chapter}{\customresetpagenumber\Large\py@HeaderFamily\centering}%
-            {\py@TitleColor Appendix \thechapter}{.5em}{\py@TitleColor}{\py@NormalColor}
+            {\py@TitleColor APPENDIX \thechapter}{.5em}{\py@TitleColor}{\py@NormalColor}
     \renewcommand{\thetable}{\Alph{chapter}-\arabic{table}}
     \renewcommand{\thefigure}{\Alph{chapter}-\arabic{figure}}
     \makeatother
     \def \appendixname {\Large\py@HeaderFamily\py@TitleColor Appendix}
     \appendix
 } 
-
-
 
 \renewcommand{\headrulewidth}{0pt}
 \def\setupHeadFootForFrontMatter{
@@ -157,7 +154,7 @@
   \begin{titlepage}%
     \pagenumbering{Alph}
     \thispagestyle{titlepage}
-    \pdfbookmark{Title Page}{titlepage}
+    \pdfbookmark{TITLE PAGE}{titlepage}
     \let\footnotesize\small
     \let\footnoterule\relax
     %\noindent\rule{\textwidth}{1pt}\par

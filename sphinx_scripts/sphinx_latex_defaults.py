@@ -29,10 +29,10 @@ latex_contents = r'''
     % The PDF bookmarks require new pages it seems, since
     % the Triton format doesn't have new pages, the other
     % "LIST OF XXX" bookmarks don't work.
-    %\phantomsection
+    \clearpage
     %\pdfbookmark{\listfigurename}{toc}
     \listoffigures
-    %\phantomsection
+    \clearpage
     %\pdfbookmark{\listtablename}{toc}
     \listoftables
     \clearpage
@@ -91,6 +91,7 @@ latex_elements = {
     #'latex_top_level_sectioning': 'part',
     #'fncychap': '',
     'passoptionstopackages': r'\PassOptionsToPackage{svgnames}{xcolor}',
+
 }
 
 # print(latex_elements)
