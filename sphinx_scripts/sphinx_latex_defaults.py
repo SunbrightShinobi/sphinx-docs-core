@@ -55,8 +55,6 @@ latex_elements = {
     #            %\setmonofont{courier}
     #            ''',
 
-
-
     'sphinxsetup': 'hmargin={.5in,.5in}, vmargin={1.3in,1.1in}',
 
 # Additional stuff for the LaTeX preamble.
@@ -64,7 +62,7 @@ latex_elements = {
                                     classification=classification,
                                     docrevision=document_rev,
                                     documentnumber=documentnumber,
-                                    revisionhistory=array_to_latex_table(yaml.load(open('Revision_History.yaml').read(), Loader=yaml.FullLoader), grid=True),
+                                    revisionhistory=array_to_latex_table((jinja_contexts['yaml_load']['_document']['revisionHistory']['latex']), grid=True),
                                     cmversion=cmstatus,
                                     project=project,
                                     changeNotice=changeNotice,
