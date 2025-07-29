@@ -4,7 +4,7 @@ master_doc = 'index'
 
 #latex_engine = 'lualatex'
 
-PREAMBLE = string.Template(open(r'./common/_templates/preamble.tex').read())
+PREAMBLE = string.Template(open(r'./_templates/preamble.tex').read())
 
 latex_docclass = {
     'howto': 'article',
@@ -77,6 +77,8 @@ latex_elements = {
                                     doc_sw_pn_dash_previous=doc_sw_pn_dash_previous,
                                     contractNum=contractNum,
                                     cdrlNum=cdrlNum,
+                                    icsVersion=icsVersion,
+                                    companyProject=companyProject,
                                    ),
 
     'tableofcontents': latex_contents,
@@ -95,9 +97,9 @@ latex_elements = {
 # print(latex_elements)
 latex_top_level_sectioning= 'part'
 
-latex_additional_files = ['./common/_templates/procedure.sty',
-                          './common/_templates/titlelogo.png',
-                          './common/_templates/sphinxmanual.cls',
+latex_additional_files = ['./_templates/procedure.sty',
+                          './_templates/titlelogo.png',
+                          './_templates/sphinxmanual.cls',
                          ]
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -110,7 +112,7 @@ latex_documents = [(master_doc,
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-#latex_logo = './common/logo.eps'
+#latex_logo = '/_templates/logo.eps'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
@@ -121,7 +123,7 @@ latex_use_parts = False
 latex_show_pagerefs = True
 
 # If true, show URL addresses after external links.
-latex_show_urls = 'footnote'
+latex_show_urls = 'no'
 
 # Documents to append as an appendix to all manuals.
 latex_appendices = []

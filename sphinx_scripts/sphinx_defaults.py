@@ -5,7 +5,7 @@ import ciscoconfparse
 import os
 
 # Load the custom objects for sphinx
-exec(open(r'./common/sphinx_scripts/sphinx_custom_objects.py').read())
+exec(open(r'./sphinx_scripts/sphinx_custom_objects.py').read())
 
 # -- General configuration ------------------------------------------------
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -23,7 +23,7 @@ extensions = [
     'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinxcontrib.jinja',
+    'sphinx_jinja',
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.nwdiag',
     'sphinxcontrib.rackdiag',
@@ -73,7 +73,6 @@ actdiag_latex_image_format = "PDF"
 # Configuration settings for plantuml
 plantuml_output_format = "svg"
 plantuml_latex_output_format = "pdf"
-plantuml = "java -jar " + os.environ[r'PLANTUML']
 
 numfig = True
 numfig_format = {'figure': 'Figure %s',
@@ -84,11 +83,14 @@ numfig_format = {'figure': 'Figure %s',
 
 # Configuration settings for draw.io
 #drawio_binary_path = 
-drawio_headless = True  #svg=False,png=True,pdf=unknown
+drawio_headless = "auto"  #svg=False,png=True,pdf=unknown
 drawio_builder_export_format = {"html": "svg", "latex": "pdf", "rinoh": "pdf"} #svg looks best
 drawio_default_export_scale = 100
 drawio_default_transparency = False
 drawio_no_sandbox = False
+drawio_disable_gpu = False
+drawio_disable_verbose_electron = False
+drawio_disable_dev_shm_usage = False
 
 # bibtex configuration settings
 bibtex_bibfiles = ['common_docs/references/refs.bib']
@@ -104,20 +106,23 @@ source_suffix = '.rst'
 pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = False # TODO: Figure out latex issues when i turn on todo list. This needs to be false in latexpdf
+todo_include_todos = True
 todo_emit_warnings = True
 todo_link_only = True
 
 highlight_languange = 'shell-session'
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['common/_templates']
+templates_path = ['_templates']
 
+# Suppress known warnings
+# Suppress autosectionlabel warnings when you have duplicate labels
+suppress_warnings = ['autosectionlabel.*']
 ################################################################################
 # Setup CM Status
 ################################################################################
 # Load the git configuration
-exec(open(r'./common/sphinx_scripts/sphinx_git.py').read())
+exec(open(r'./sphinx_scripts/sphinx_git.py').read())
 
 cmstatus='Non-CM'
 if is_in_git():
@@ -127,9 +132,9 @@ if is_in_git():
 
 # set filename
 file_name = '_'.join([documentnumber,
-                      project.replace(' ', '_'),
-                      'Rev',
                       document_rev,
+                      project.replace(' ', '_'),
+                      csci.replace(' ', '_'),
                       release.replace('.', '_').replace(' ', '_'),])
 
 rst_prolog = """
@@ -145,7 +150,7 @@ rst_prolog = """
 jinja_base = os.path.abspath('.') # Allows Jinja to find configured templates not in default path
 
 # Load the html configuration
-exec(open(r'./common/sphinx_scripts/sphinx_html_defaults.py').read())
+exec(open(r'./sphinx_scripts/sphinx_html_defaults.py').read())
 # Load the latexpdf configuration
-exec(open(r'./common/sphinx_scripts/sphinx_latex_defaults.py').read())
+exec(open(r'./sphinx_scripts/sphinx_latex_defaults.py').read())
 
