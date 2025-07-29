@@ -3,6 +3,8 @@ import sphinx
 import tablib
 import ciscoconfparse
 import os
+from pathlib import Path
+
 
 # Load the custom objects for sphinx
 exec(open(r'./sphinx_scripts/sphinx_custom_objects.py').read())
@@ -147,7 +149,7 @@ rst_prolog = """
            )
 
 #Jinja Configuration
-jinja_base = os.path.abspath('.') # Allows Jinja to find configured templates not in default path
+jinja_base = Path(".").resolve() # Allows Jinja to find configured templates not in default path
 
 # Load the html configuration
 exec(open(r'./sphinx_scripts/sphinx_html_defaults.py').read())
