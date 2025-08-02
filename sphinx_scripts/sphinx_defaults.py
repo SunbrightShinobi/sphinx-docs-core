@@ -4,6 +4,7 @@ import tablib
 import ciscoconfparse
 import os
 from pathlib import Path
+os.environ["MERMAIDCLI_COMMAND"] = "npx --package=@mermaid-js/mermaid-cli --call mmdc"
 
 
 # Load the custom objects for sphinx
@@ -42,6 +43,8 @@ extensions = [
     'sphinxcontrib.drawio',
     'sphinxdrawio.drawio_html',
     'sphinxcontrib.bibtex',
+    'sphinxcontrib.mermaid',
+    'myst_parser',
 ]
 
 # Configuration settings for imgmath
@@ -93,6 +96,15 @@ drawio_no_sandbox = False
 drawio_disable_gpu = False
 drawio_disable_verbose_electron = False
 drawio_disable_dev_shm_usage = False
+
+# sphinxcontrib.mermaid configuration settings
+mermaid_enable = True
+mermaid_output_format = "raw"  # svg, png, pdf
+mermaid_latex_output_format = "pdf"  # pdf is the only option for LaTeX
+mermaid_default_export_scale = 75  # Default scale for exported diagrams
+mermaid_include_elk = "0.1.4" #Include ELK for layout algorithms
+mermaid_cmd = "npx mmdc"
+mermaid_d3_zoom = True  # Enable D3 zoom functionality for Mermaid diagrams
 
 # bibtex configuration settings
 bibtex_bibfiles = ['common_docs/references/refs.bib']
