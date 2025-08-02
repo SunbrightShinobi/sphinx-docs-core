@@ -6,8 +6,9 @@ import os
 from pathlib import Path
 os.environ["MERMAIDCLI_COMMAND"] = "npx --package=@mermaid-js/mermaid-cli --call mmdc"
 
+
 # Load the custom objects for sphinx
-exec(open(r'./common/sphinx_scripts/sphinx_custom_objects.py').read())
+exec(open(r'./sphinx_scripts/sphinx_custom_objects.py').read())
 
 # -- General configuration ------------------------------------------------
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -126,7 +127,7 @@ todo_link_only = True
 highlight_languange = 'shell-session'
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['common/_templates']
+templates_path = ['_templates']
 
 # Suppress known warnings
 # Suppress autosectionlabel warnings when you have duplicate labels
@@ -135,7 +136,7 @@ suppress_warnings = ['autosectionlabel.*']
 # Setup CM Status
 ################################################################################
 # Load the git configuration
-exec(open(r'./common/sphinx_scripts/sphinx_git.py').read())
+exec(open(r'./sphinx_scripts/sphinx_git.py').read())
 
 cmstatus='Non-CM'
 if is_in_git():
@@ -163,7 +164,7 @@ rst_prolog = """
 jinja_base = Path(".").resolve() # Allows Jinja to find configured templates not in default path
 
 # Load the html configuration
-exec(open(r'./common/sphinx_scripts/sphinx_html_defaults.py').read())
+exec(open(r'./sphinx_scripts/sphinx_html_defaults.py').read())
 # Load the latexpdf configuration
-exec(open(r'./common/sphinx_scripts/sphinx_latex_defaults.py').read())
+exec(open(r'./sphinx_scripts/sphinx_latex_defaults.py').read())
 

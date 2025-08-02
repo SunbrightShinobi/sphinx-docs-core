@@ -1,0 +1,213 @@
+
+\newcommand{\contractnumber}{CONTRACT: \textbf{\contractNum}}
+
+% https://www.overleaf.com/learn/latex/Positioning_of_Figures
+% Make Captions go above tables
+\floatplacement{table}{tp!}
+% Make Captions go below figures
+\floatplacement{figure}{bp!}
+
+% The CM department wants section titles to be like Heading 1 in Word with a
+% Number.0 (eg 1.0, 2.0) on the left, no fancy stuff, no rule, etc
+
+\ChNameVar {\raggedright\normalsize \py@HeaderFamily}
+\ChNumVar  {\raggedright\Large      \py@HeaderFamily}
+\ChTitleVar{\raggedright\Large      \py@HeaderFamily}
+\ChNameAsIs
+\ChTitleAsIs
+\renewcommand{\DOCH}{%
+    \py@TitleColor\Large\CNoV\thechapter\space
+}
+\renewcommand{\DOTI}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+}
+\renewcommand{\DOTIS}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+}
+
+\def\custompagenumberformat{%
+}
+
+\def\customresetpagenumber{%
+  \setcounter{page}{1}
+}
+
+% When the appendices start, add the Chapter Name (CNV) back in so it says
+% "Appendix A" instead of "A.0", make it centered, reset the page numbering,
+% change page number format
+\newcommand\beginappendices {
+    % Set up the appendix mode and modify the LaTex toc behavior
+    \makeatletter
+    \ChNameVar {\raggedright\normalsize \py@HeaderFamily}
+    \ChNumVar  {\raggedright\Large      \py@HeaderFamily}
+    \ChTitleVar{\raggedright\Large      \py@HeaderFamily}
+
+    \renewcommand{\DOCH}{%
+        %\Large\CNV\FmN{\@chapapp}\space \CNoV\thechapter
+        \py@TitleColor\CNV\FmN{\@chapapp}\space\CNoV\thechapter\space\space
+    }
+    \renewcommand{\thepage}{\Alph{chapter}-\arabic{page}}
+    \titleformat{\chapter}{\customresetpagenumber\Large\py@HeaderFamily\centering}%
+            {\py@TitleColor APPENDIX \thechapter}{.5em}{\py@TitleColor}{\py@NormalColor}
+    \renewcommand{\thetable}{\Alph{chapter}-\arabic{table}}
+    \renewcommand{\thefigure}{\Alph{chapter}-\arabic{figure}}
+    \makeatother
+    \def \appendixname {\Large\py@HeaderFamily\py@TitleColor Appendix}
+    \appendix
+} 
+
+\renewcommand{\headrulewidth}{0pt}
+\def\setupHeadFootForFrontMatter{
+    \fancypagestyle{titlepage}{
+        \fancyhead[C]{\textbf{\classification}
+                      \vspace{.5in}}
+        \fancyfoot[L]{\scriptsize\cmversion\normalsize\\
+                      \scriptsize{Total Pages: \lastpageref*{LastPages}}}
+        \fancyfoot[C]{\vspace{.1in}
+                      \normalfont\textbf{\classification}}
+        \fancyfoot[R]{\scriptsize\py@release\normalsize}
+    }
+    \fancypagestyle{plain}{
+        \fancyhead[L]{\contractnumber
+                      \vspace{.3in}}
+        \fancyhead[C]{\textbf{\classification}
+                      \vspace{.5in}}
+        \fancyhead[R]{\smallskip
+                      DOCUMENT NUMBER: \textbf\documentnumber \\
+                      REVISION: \textbf\docrevision \\
+                      DATE: \textbf\docReleaseDate}
+        \fancyfoot[L]{\scriptsize\cmversion\normalsize}
+        \fancyfoot[C]{\custompagenumberformat
+                      \vspace{.1in}
+                      \normalfont\textbf{\classification}\\
+                      \scriptsize{<REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER>}}
+        \fancyfoot[R]{\scriptsize\py@release\normalsize}
+    }
+
+    \fancypagestyle{normal}{
+        \fancyhead[L]{\contractnumber
+                      \vspace{.3in}}
+        \fancyhead[C]{\textbf{\classification}
+                      \vspace{.5in}}
+        \fancyhead[R]{\smallskip
+                      DOCUMENT NUMBER: \textbf\documentnumber \\
+                      REVISION: \textbf\docrevision \\
+                      DATE: \textbf\docReleaseDate}
+        \fancyfoot[L]{\scriptsize\cmversion\normalsize}
+        \fancyfoot[C]{\custompagenumberformat
+                      \vspace{.1in}
+                      \normalfont\textbf{\classification}\\
+                      \hspace{-1.35in}\scriptsize{<REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER>}}
+        \fancyfoot[R]{\scriptsize\py@release\normalsize}
+    }
+
+    \fancyhead{}
+    \fancyfoot{}
+
+}
+
+
+
+\def\setupHeadFootForText{
+
+    \fancypagestyle{plain}{
+        \fancyhead[L]{\contractnumber
+                      \vspace{.3in}}
+        \fancyhead[C]{\textbf{\classification}
+                      \vspace{.5in}}
+        \fancyhead[R]{\smallskip
+                      DOCUMENT NUMBER: \textbf\documentnumber \\
+                      REVISION: \textbf\docrevision \\
+                      DATE: \textbf\docReleaseDate}
+        \fancyfoot[L]{\scriptsize\cmversion\normalsize}
+        \fancyfoot[C]{\custompagenumberformat
+                      \vspace{.1in}
+                      \normalfont\textbf{\classification}\\
+                      \scriptsize{<REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER>}}
+        \fancyfoot[R]{\scriptsize\py@release\normalsize}
+    }
+    \fancypagestyle{normal}{
+        \fancyhead[L]{\contractnumber
+                      \vspace{.3in}}
+        \fancyhead[C]{\textbf{\classification}
+                      \vspace{.5in}}
+        \fancyhead[R]{\smallskip
+                      DOCUMENT NUMBER: \textbf\documentnumber \\
+                      REVISION: \textbf\docrevision \\
+                      DATE: \textbf\docReleaseDate}
+        \fancyfoot[L]{\scriptsize\cmversion\normalsize}
+        \fancyfoot[C]{\custompagenumberformat
+                      \vspace{.1in}
+                      \normalfont\textbf{\classification}\\
+                      \scriptsize{<REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER>}}
+        \fancyfoot[R]{\scriptsize\py@release\normalsize}
+    }
+
+    \fancyhead{}
+    \fancyfoot{}
+}
+
+\renewcommand{\sphinxmaketitle}{%
+  \let\spx@tempa\relax
+  \ifHy@pageanchor\def\spx@tempa{\Hy@pageanchortrue}\fi
+  %\hypersetup{pageanchor=false}% avoid duplicate destination warnings
+  \begin{titlepage}%
+    \pagenumbering{Alph}
+    \thispagestyle{titlepage}
+    \pdfbookmark{TITLE PAGE}{titlepage}
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    %\noindent\rule{\textwidth}{1pt}\par
+      \begingroup % for PDF information dictionary
+       \def\endgraf{ }\def\and{\& }%
+       \pdfstringdefDisableCommands{\def\\{, }}% overwrite hyperref setup
+       \hypersetup{pdfauthor={\@author}, pdftitle={\@title}}%
+      \endgroup
+    \begin{center}%
+      \includegraphics[width=0.15\linewidth]{titlelogo.png}%
+      \vfill
+      \py@HeaderFamily
+      %{\Huge \@title \par}
+      {\large <COMPANY NAME>\\ <COMPANY SYSTEM NAME>\\ <COMPANY SYSTEM DESCRIPTION>\\ INTEGRATED FUNCTIONAL CAPABILITY <TBD>\\ DESIGN INTEGRATION \& TEST\\ \vspace{0.3cm} \Large \@title \\ FOR \\ \systemName \par \large\csci \par}
+      {\itshape\large \py@release\releaseinfo \par}
+      \vfill
+      \normalfont DOCUMENT NUMBER: \textbf\documentnumber\\
+      \normalfont REVISION: \textbf\docrevision\\
+      \normalfont RELEASE DATE: \textbf\docReleaseDate\\
+      \smallskip
+      \sigField{Sig0}{2.5in}{0.4in}
+      \vfill
+      \normalfont\small Prepared IAW:\\
+      \normalfont\small CONTRACT: \textbf{\contractNum}\\
+      \normalfont\small CDRL: \textbf{\cdrlNum} \\
+      \vspace{0.4cm}
+      \normalfont\small Prepared For:\\
+      <CUSTOMER NAME>\\
+      \normalfont\small <CUSTOMER DIVISION NAME>\\
+      \normalfont\small <CUSTOMER SUBDIVISION NAME>\\
+      \normalfont\small <CUSTOMER OFFICE NAME>\\
+      \normalfont\small <CUSTOMER CITY>, <CUSTOMER STATE>\\
+      \vspace{0.3cm}
+      \small Prepared by:\\
+      \smallskip
+      \small\@author \\
+      \small\py@authoraddress \par
+      \vfill
+    \end{center}%\par
+    \@thanks
+    \scriptsize <REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER SECTION 1> \par
+    \smallskip
+    \scriptsize <REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER SECTION 2 > \par
+    \smallskip
+    \scriptsize <REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER SECTION 3> \par
+    \smallskip
+    \scriptsize <REPLACE WITH COMPANY ENGINEERING DISCLOSURE DISCLAIMER SECTION 4>
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+  \let\thanks\relax\let\maketitle\relax
+  %\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \spx@tempa
+}
+
+\renewcommand{\printindex}{}
