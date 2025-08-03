@@ -51,28 +51,28 @@ extensions = [
 imgmath_image_format = "png"
 # Configuration settings for seqdiag
 seqdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
-seqdiag_html_image_format = "SVG"
+seqdiag_html_image_format = "PNG"
 seqdiag_latex_image_format = "PDF"
 
 # Configuration settings for nwdiag, rackdiag(nwdiag), packetdiag(nwdiag)
 nwdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
-nwdiag_html_image_format = "SVG"
+nwdiag_html_image_format = "PNG"
 nwdiag_latex_image_format = "PDF"
 rackdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
-rackdiag_html_image_format = "SVG"
+rackdiag_html_image_format = "PNG"
 rackdiag_latex_image_format = "PDF"
 packetdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
-packetdiag_html_image_format = "SVG"
+packetdiag_html_image_format = "PNG"
 packetdiag_latex_image_format = "PDF"
 
 # Configuration settings for blockdiag
 blockdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
-blockdiag_html_image_format = "SVG"
+blockdiag_html_image_format = "PNG"
 blockdiag_latex_image_format = "PDF"
 
 # Configuration settings for actdiag
 actdiag_fontpath = '/usr/share/fonts/dejavu/DejaVuSans.ttf'
-actdiag_html_image_format = "SVG"
+actdiag_html_image_format = "PNG"
 actdiag_latex_image_format = "PDF"
 
 # Configuration settings for plantuml
@@ -99,7 +99,7 @@ drawio_disable_dev_shm_usage = False
 
 # sphinxcontrib.mermaid configuration settings
 mermaid_enable = True
-mermaid_output_format = "raw"  # svg, png, pdf
+mermaid_output_format = "png"  # svg, png, pdf
 mermaid_latex_output_format = "pdf"  # pdf is the only option for LaTeX
 mermaid_default_export_scale = 75  # Default scale for exported diagrams
 mermaid_include_elk = "0.1.4" #Include ELK for layout algorithms
