@@ -36,7 +36,6 @@ extensions = [
     'sphinx_git',
     'sphinxcontrib.plantuml',
     'sphinxcontrib.jupyter',
-    'sphinxcontrib.ansibleautodoc',
     'sphinxcontrib.confluencebuilder',
     'sphinx.ext.extlinks',
     'sphinx.ext.githubpages',
