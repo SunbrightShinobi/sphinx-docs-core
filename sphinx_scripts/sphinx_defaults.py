@@ -101,7 +101,7 @@ mermaid_enable = True
 mermaid_output_format = "png"  # svg, png, pdf
 mermaid_latex_output_format = "pdf"  # pdf is the only option for LaTeX
 mermaid_default_export_scale = 75  # Default scale for exported diagrams
-mermaid_include_elk = "0.1.4" #Include ELK for layout algorithms
+mermaid_include_elk = False
 mermaid_cmd = "npx mmdc"
 mermaid_d3_zoom = True  # Enable D3 zoom functionality for Mermaid diagrams
 
@@ -113,7 +113,7 @@ bibtex_encoding = 'utf-8-sig' #[utf-8-sig,latin]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+`source_suffix = {'.rst': 'restructuredtext'}`
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
