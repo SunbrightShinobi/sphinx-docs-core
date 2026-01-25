@@ -6,45 +6,12 @@ import os
 from pathlib import Path
 os.environ["MERMAIDCLI_COMMAND"] = "npx --package=@mermaid-js/mermaid-cli --call mmdc"
 
-
 # Load the custom objects for sphinx
-exec(open(r'./sphinx_scripts/sphinx_custom_objects.py').read())
+from sphinx_scripts import sphinx_custom_objects
 
 # -- General configuration ------------------------------------------------
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.autosectionlabel',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.imgmath',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx_jinja',
-    'sphinxcontrib.seqdiag',
-    'sphinxcontrib.nwdiag',
-    'sphinxcontrib.rackdiag',
-    'sphinxcontrib.packetdiag',
-    'sphinxcontrib.blockdiag',
-    'sphinxcontrib.actdiag',
-    'sphinx_git',
-    'sphinxcontrib.plantuml',
-    'sphinxcontrib.jupyter',
-    'sphinxcontrib.confluencebuilder',
-    'sphinx.ext.extlinks',
-    'sphinx.ext.githubpages',
-    'sphinxcontrib.drawio',
-    'sphinxdrawio.drawio_html',
-    'sphinxcontrib.bibtex',
-    'sphinxcontrib.mermaid',
-    'myst_parser',
-]
 
 # Configuration settings for imgmath
 imgmath_image_format = "png"
@@ -77,6 +44,7 @@ actdiag_latex_image_format = "PDF"
 # Configuration settings for plantuml
 plantuml_output_format = "svg"
 plantuml_latex_output_format = "pdf"
+plantuml_syntax_error_image = False
 
 numfig = True
 numfig_format = {'figure': 'Figure %s',
@@ -87,13 +55,13 @@ numfig_format = {'figure': 'Figure %s',
 
 # Configuration settings for draw.io
 #drawio_binary_path = 
-drawio_headless = "auto"  #svg=False,png=True,pdf=unknown
+drawio_headless = True  #svg=False,png=True,pdf=unknown
 drawio_builder_export_format = {"html": "svg", "latex": "pdf", "rinoh": "pdf"} #svg looks best
 drawio_default_export_scale = 100
 drawio_default_transparency = False
 drawio_no_sandbox = False
-drawio_disable_gpu = False
-drawio_disable_verbose_electron = False
+drawio_disable_gpu = True
+drawio_disable_verbose_electron = True
 drawio_disable_dev_shm_usage = False
 
 # sphinxcontrib.mermaid configuration settings
@@ -163,7 +131,7 @@ rst_prolog = """
 jinja_base = Path(".").resolve() # Allows Jinja to find configured templates not in default path
 
 # Load the html configuration
-exec(open(r'./sphinx_scripts/sphinx_html_defaults.py').read())
+from sphinx_scripts import sphinx_html_defaults
 # Load the latexpdf configuration
-exec(open(r'./sphinx_scripts/sphinx_latex_defaults.py').read())
+from sphinx_scripts import sphinx_latex_defaults
 
