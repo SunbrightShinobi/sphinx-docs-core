@@ -45,6 +45,7 @@ latex_contents = r'''
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'letterpaper',
+    'pointsize': '10pt',
 
     # The font size ('10pt', '11pt' or '12pt').
     #'pointsize': '10pt',
@@ -56,7 +57,10 @@ latex_elements = {
     #            ''',
 
     'sphinxsetup': 'hmargin={.5in,.5in}, vmargin={1.3in,1.1in}',
-
+    "extrapackages": r"""
+    \usepackage{ragged2e}
+    \usepackage{appendix}
+    """,
 # Additional stuff for the LaTeX preamble.
     'preamble': PREAMBLE.substitute(address=address,
                                     classification=classification,
